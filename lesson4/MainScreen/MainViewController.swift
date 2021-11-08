@@ -19,9 +19,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-    }
-    
-    @IBAction func getDataButton(_ sender: Any) {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(
@@ -30,6 +27,10 @@ class MainViewController: UIViewController {
             ),
             forCellReuseIdentifier: "myCell"
         )
+    }
+    
+    @IBAction func getDataButton(_ sender: Any) {
+
         
         viewModel.getCatsData()
     }
@@ -68,7 +69,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as? FactTableViewCell {
-            cell.cunfigure(factText: facts[indexPath.row].text)
+            cell.configure(factText: facts[indexPath.row].text)
             return cell
         } else {
             return UITableViewCell()

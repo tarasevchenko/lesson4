@@ -16,7 +16,7 @@ class FactTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func cunfigure(factText: String) {
+    func configure(factText: String) {
         factLabel.text = factText
     }
 }
