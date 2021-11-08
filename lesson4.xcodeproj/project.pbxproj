@@ -15,6 +15,8 @@
 		7DA5273E273928B700E53BBF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA5273D273928B600E53BBF /* MainViewModel.swift */; };
 		7DA5274127392BB900E53BBF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA5274027392BB900E53BBF /* NetworkService.swift */; };
 		7DA527462739412C00E53BBF /* FactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA527452739412C00E53BBF /* FactModel.swift */; };
+		7DA5274A2739541B00E53BBF /* FactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA527482739541B00E53BBF /* FactTableViewCell.swift */; };
+		7DA5274B2739541B00E53BBF /* FactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DA527492739541B00E53BBF /* FactTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		7DA5273D273928B600E53BBF /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7DA5274027392BB900E53BBF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7DA527452739412C00E53BBF /* FactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactModel.swift; sourceTree = "<group>"; };
+		7DA527482739541B00E53BBF /* FactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactTableViewCell.swift; sourceTree = "<group>"; };
+		7DA527492739541B00E53BBF /* FactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		7DA5273C2739287500E53BBF /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7DA527472739540100E53BBF /* FactsCell */,
 				7DA5272C27391A0000E53BBF /* MainViewController.swift */,
 				7DA5273D273928B600E53BBF /* MainViewModel.swift */,
 			);
@@ -103,6 +108,15 @@
 				7DA527452739412C00E53BBF /* FactModel.swift */,
 			);
 			path = NetworkModels;
+			sourceTree = "<group>";
+		};
+		7DA527472739540100E53BBF /* FactsCell */ = {
+			isa = PBXGroup;
+			children = (
+				7DA527482739541B00E53BBF /* FactTableViewCell.swift */,
+				7DA527492739541B00E53BBF /* FactTableViewCell.xib */,
+			);
+			path = FactsCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +180,7 @@
 				7DA5273527391A0600E53BBF /* LaunchScreen.storyboard in Resources */,
 				7DA5273227391A0600E53BBF /* Assets.xcassets in Resources */,
 				7DA5273027391A0000E53BBF /* Main.storyboard in Resources */,
+				7DA5274B2739541B00E53BBF /* FactTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +194,7 @@
 				7DA5272D27391A0000E53BBF /* MainViewController.swift in Sources */,
 				7DA5272927391A0000E53BBF /* AppDelegate.swift in Sources */,
 				7DA5274127392BB900E53BBF /* NetworkService.swift in Sources */,
+				7DA5274A2739541B00E53BBF /* FactTableViewCell.swift in Sources */,
 				7DA527462739412C00E53BBF /* FactModel.swift in Sources */,
 				7DA5273E273928B700E53BBF /* MainViewModel.swift in Sources */,
 			);
