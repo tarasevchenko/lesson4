@@ -9,7 +9,7 @@ import UIKit
 
 class FactTableViewCell: UITableViewCell {
     
-    @IBOutlet private weak var factLabel: UILabel!
+    @IBOutlet weak var factLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -17,6 +17,7 @@ class NetworkService {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             do {
                 let facts = try JSONDecoder().decode([Fact].self, from: data!)
+    
                 completion(facts)
             } catch {
                 completion(nil)

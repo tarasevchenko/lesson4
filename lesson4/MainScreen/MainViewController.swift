@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RealmSwift
+import Foundation
 
 class MainViewController: UIViewController {
     
@@ -15,10 +17,20 @@ class MainViewController: UIViewController {
     private let viewModel = MainViewModel()
     
     private var facts = [Fact]()
+    private var selectedFactId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        viewModel.fetchDataFromDataBase()
+        configureTableView()
+    }
+    
+    @IBAction func getDataButton(_ sender: Any) {
+        viewModel.getCatsData()
+    }
+    
+    private func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(
@@ -29,23 +41,23 @@ class MainViewController: UIViewController {
         )
     }
     
-    @IBAction func getDataButton(_ sender: Any) {
-
-        
-        viewModel.getCatsData()
-    }
-    
 }
 
 extension MainViewController: MainViewModelDelegate {
-    
-    func dataDidReciveCatsData(data: [Fact]) {
+    func dataDidReciveCatsFromDataBase(data: [Fact]) {
+        self.facts = data
         DispatchQueue.main.async {[weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    func dataDidReciveCats(data: [Fact]) {
+        DispatchQueue.main.async {[weak self] in
+            self?.facts = data
             self?.resultLabel.textColor = .black
             self?.resultLabel.text = "Данные загружены"
-            self?.facts = data
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {[weak self] in
                 self?.tableView.reloadData()
                 self?.resultLabel.isHidden = true
             }
@@ -59,6 +71,13 @@ extension MainViewController: MainViewModelDelegate {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destVc = segue.destination as? DetailViewController,
+           let factId = selectedFactId {
+            destVc.factId = factId
+        }
+    }
+    
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -69,11 +88,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as? FactTableViewCell {
-            cell.configure(factText: facts[indexPath.row].text)
+            cell.configure(factText: facts[indexPath.row].text ?? "")
             return cell
         } else {
             return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedFactId = facts[indexPath.row].id
+        performSegue(withIdentifier: "detailVC", sender: self)
     }
     
 }
